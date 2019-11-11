@@ -1,0 +1,8 @@
+# How to take a command, paste it into a router, and then run it. You will need to copy your tclsh script between the brackets of the puts command.
+enable
+tclsh
+# create the new tcl.tcl file with the commands pasted in
+puts [open "flash:tcl.tcl" w+] {set buffer [exec "show ip int b"] ; set pos [string first "10.0.0." $buffer] ; if {$pos > -1} {puts "The 10.0.0.0/24 network is on this box."}}
+exit
+# Run the script from flash
+tclsh flash:tcl.tcl
